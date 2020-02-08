@@ -5,7 +5,7 @@ import "../styles/App.css";
 import PrivateRoute from "./PrivateRoute";
 import Login from "./Login";
 import SignUp from "./SignUp";
-import Nav from "./Nav";
+import Dashboard from "./Dashboard";
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       <div className="App">
         <h1>DVST3</h1>
         <Switch>
-          <PrivateRoute path="/nav" component={Nav} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
           <Route path="/login" component={Login} />
           <Route path="/signup" component={SignUp} />
         </Switch>

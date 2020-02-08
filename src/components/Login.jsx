@@ -20,7 +20,7 @@ const Login = ({ values, errors, touched, status }) => {
         localStorage.setItem("userID", res.data.user.id)
         localStorage.setItem("token", res.data.token);
         alert(res.data.message)
-        push("/");
+        push("/dashboard");
       })
       .catch(err => console.log(err))
       .finally();
