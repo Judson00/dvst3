@@ -1,6 +1,7 @@
 export const DATA_START = "FETCHING_DATA_START";
 export const DATA_SUCCESS = "FETCHING_DATA_SUCCESS";
 export const DATA_FAILURE = "FETCHING_DATA_FAILURE";
+export const ADD_NEW_BUDGET = "ADD_NEW_BUDGET";
 export const EDITING_STATE = "EDITING_STATE";
 export const FORM_STATE = "FORM_STATE";
 export const RESET_FORM = "RESET_FORM";
@@ -15,10 +16,10 @@ const initialState = {
       userName: ""
     },
     personalBudget: [],
-    editing: false,
-    isLoading: false,
-    error: {}
-  }
+  },
+  editing: false,
+  isLoading: false,
+  error: {}
 }
 
 export default(state = initialState, action) => {
@@ -32,28 +33,39 @@ export default(state = initialState, action) => {
       return{
         ...state,
         isLoading: false,
-        data: {
-          ...state,
+        data:{
+          ...state.data,
           user: {
             ...state.user,
             id: action.payload.id,
             userName: action.payload.userName
           },
-          personalBudget: [...state.data.personalBudget, action.payload.personalBudget]
-        }
-      };
+          personalBudget: [action.payload.personalBudget]
+      }
+    };
     case DATA_FAILURE:
       return{
         ...state,
         isLoading: false,
-        data: {
-          ...state,
+        data:{
+          ...state.data,
           user: {
             ...state.user,
             id: action.payload.id,
             userName: action.payload.userName
           },
-          personalBudget: [...state.data.personalBudget, action.payload.personalBudget]
+          personalBudget: [action.payload.personalBudget]
+        }
+      }
+    case ADD_NEW_BUDGET:
+      return{
+          ...state,
+        data:{
+          ...state.data,
+          user: {
+            ...state.user,
+          },
+          personalBudget: [action.payload]
         }
       }
     default:

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../actions";
 
@@ -13,7 +14,7 @@ const Dashboard = () => {
   return(
     <div>
       <h1>Welcome {state.data.user.userName}</h1>
-      {console.log(`state from dashboard line 16: ${state.data}`)}
+      {console.log(`state from dashboard line 16: ${state.data.user}`)}
       {state.data.personalBudget.map(item => (
         <ul key={item.id}>
           <li>id: {item.id}</li>
@@ -27,6 +28,7 @@ const Dashboard = () => {
           <li>Other: {item.other}</li>
         </ul>
       ))}
+    <Link to="/budgetform">Add Budget</Link>
     </div>
   )
 }
